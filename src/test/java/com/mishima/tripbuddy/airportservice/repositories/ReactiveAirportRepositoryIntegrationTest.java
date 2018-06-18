@@ -43,7 +43,7 @@ public class ReactiveAirportRepositoryIntegrationTest {
 
     @After
     public void tearDown() {
-        operations.dropCollection(Airport.class).block();
+        operations.dropCollection(Airport.class).then().block();
     }
 
     @Test
