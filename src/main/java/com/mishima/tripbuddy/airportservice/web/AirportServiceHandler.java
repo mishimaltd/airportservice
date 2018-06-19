@@ -30,8 +30,10 @@ public class AirportServiceHandler {
 
     @Nonnull
     public Mono<ServerResponse> save(ServerRequest request) {
-        return request.bodyToMono(Airport.class).flatMap(geolocation ->
-                ServerResponse.ok().contentType(APPLICATION_JSON).body(fromPublisher(repository.save(geolocation), Airport.class)));
+        return request.bodyToMono(Airport.class).flatMap(airport -> {
+                log.info("Saving airport -> {}", airport);
+                return ServerResponse.ok().contentType(APPLICATION_JSON).body(fromPublisher(repository.save(airport), Airport.class));
+        });
     }
 
     @Nonnull
