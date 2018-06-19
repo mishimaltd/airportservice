@@ -21,4 +21,6 @@ public interface ReactiveAirportRepository extends ReactiveCrudRepository<Airpor
     //          'distanceMultiplier' : metric.multiplier, 'spherical' : true }
     Flux<GeoResult<Airport>> findByLocationNear(Point location, Distance distance);
 
+    Mono<Airport> deleteByCode(String code);
+
 }
