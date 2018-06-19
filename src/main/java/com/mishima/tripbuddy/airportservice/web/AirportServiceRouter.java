@@ -19,6 +19,7 @@ public class AirportServiceRouter {
                 .and(RouterFunctions.route(GET("/airports/cityid/{cityId}").and(accept(APPLICATION_JSON)), handler::getByCityId))
                 .and(RouterFunctions.route(GET("/airports/near/{lat}/{lng}/{distance}").and(accept(APPLICATION_JSON)), handler::findNear))
                 .and(RouterFunctions.route(PUT("/airports").and(contentType(APPLICATION_JSON)), handler::save))
-                .and(RouterFunctions.route(DELETE("/airports/{code}"), handler::deleteByCode));
+                .and(RouterFunctions.route(DELETE("/airports/id/{id}"), handler::deleteById))
+                .and(RouterFunctions.route(DELETE("/airports/code/{code}"), handler::deleteByCode));
     }
 }

@@ -64,6 +64,11 @@ public class AirportServiceHandler {
     }
 
     @Nonnull
+    public Mono<ServerResponse> deleteById(ServerRequest request) {
+        return repository.deleteById(request.pathVariable("id")).then(ServerResponse.ok().build());
+    }
+
+    @Nonnull
     public Mono<ServerResponse> deleteByCode(ServerRequest request) {
         return repository.deleteByCode(request.pathVariable("code")).then(ServerResponse.ok().build());
     }
